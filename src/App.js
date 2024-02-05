@@ -1,7 +1,4 @@
 import React from "react";
-import Animal from "./components/Animal";
-import AnimalCategory from "./components/AnimalCategory";
-import Header from "./components/Header";
 import "./styles.css";
 
 export default function App() {
@@ -39,5 +36,49 @@ export default function App() {
         />
       </AnimalCategory>
     </main>
+  );
+}
+
+function Animal({ emoji, name, description }) {
+  return (
+    <>
+      <h3>
+        <AnimalEmoji>{emoji}</AnimalEmoji> {name}
+      </h3>
+      {description}
+      <Button>
+        Adopt <strong>{name}</strong>
+      </Button>
+    </>
+  );
+}
+
+function AnimalCategory({ title, children }) {
+  return (
+    <>
+      <h2>{title}</h2>
+      <section>{children}</section>
+    </>
+  );
+}
+
+function AnimalEmoji({ children }) {
+  return <span className="animal-emoji">{children}</span>;
+}
+
+function Button({ children }) {
+  return (
+    <button type="button" className="button">
+      {children}
+    </button>
+  );
+}
+
+function Header() {
+  return (
+    <header>
+      <h1>Animal Shelter</h1>
+      <p>Please adopt our lovely pets!</p>
+    </header>
   );
 }
